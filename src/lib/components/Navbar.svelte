@@ -7,8 +7,18 @@
     let isNavShowing = false;
 </script>
 
+<svelte:head>
+    {#if isNavShowing}
+        <style lang="postcss">
+            body{
+                @apply overflow-hidden md:overflow-auto;
+            }
+        </style>
+    {/if}
+</svelte:head>
+
 <!-- Mobile nav Control -->
-<button class="fixed right-6 top-6 z-navBarToggle" on:click={()=> isNavShowing = !isNavShowing} >
+<button class="fixed right-6 top-6 z-navBarToggle md:hidden" class:text-goldenFizz={isNavShowing} class:text-daisyBush={!isNavShowing} on:click={()=> isNavShowing = !isNavShowing} >
     {#if isNavShowing}
         <Close width={32} height={32} />
     {:else}
@@ -16,8 +26,8 @@
     {/if}
 </button>
 
-<header class="absolute md:relative z-navBar md:col-span-3 bg-daisyBush text-center w-full h-screen -translate-x-full md:translate-x-0 transition-transform" class:translate-x-0={isNavShowing}>
-    <div class="my-10">
+<header class="fixed md:h-full md:relative z-navBar md:col-span-3 bg-daisyBush text-center w-full h-screen -translate-x-full md:translate-x-0 transition-transform" class:translate-x-0={isNavShowing}>
+    <div class="mt-10 mb-10 md:mb-24">
         <a href="/invoices">
             <img src="/images/logo.svg" class="mx-auto" alt="DH" />
         </a>
