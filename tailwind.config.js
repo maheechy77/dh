@@ -8,6 +8,9 @@ export default {
       handwriting:['Kalam', "cursive"],
     },
     extend: {
+      backgroundImage:{
+        circle:"url('/images/circle.svg')",
+      },
       borderWidth:{
         '1':'1px',
       },
@@ -34,7 +37,8 @@ export default {
         fog: '#decaec',
       },
       gridTemplateColumns:{
-        'invoiceTable':"100px 100px 60px 1fr 116px 32px 32px"
+        'invoiceTable':"100px 100px 60px 1fr 116px 32px 32px",
+        'invoiceTableMobile':"1fr 90px"
       },
       zIndex:{
         navBarToggle:91,
