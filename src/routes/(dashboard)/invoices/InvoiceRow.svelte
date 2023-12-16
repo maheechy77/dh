@@ -10,7 +10,7 @@
     import Trash from '$lib/components/icons/Trash.svelte';
 
     export let invoice:Invoice;
-
+    let isOptionsDisabled = false;
     let isAddMenuShowing:boolean = false;
 
     const handleDelete = () =>{
@@ -29,10 +29,13 @@
         if(invoice.invoiceStatus === "draft"){
             return "draft";
         }else if(invoice.invoiceStatus === "sent" && !isLate(invoice.dueDate)){
+            isOptionsDisabled = true;
             return "sent";
         }else if(invoice.invoiceStatus === "sent" && isLate(invoice.dueDate)){
+            isOptionsDisabled = true;
             return "late";
         }else if(invoice.invoiceStatus === "paid"){
+            isOptionsDisabled = true;
             return "paid";
         }
     }
