@@ -2,13 +2,13 @@
     import { onMount } from 'svelte';
     import Search from '$lib/components/Search.svelte';
     import CircledAmount from '$lib/components/CircledAmount.svelte';
-    import Portal from '$lib/components/Portal.svelte';
     import InvoiceRow from "./InvoiceRow.svelte";
     import { loadInvoices,invoices } from '$lib/stores/InvoiceStore';
     import {sumInvoices,centsToDollars } from "$lib/utils/moneyHelpers";
     import BlankState from './BlankState.svelte';
     import InvoiceRowHeader from './InvoiceRowHeader.svelte';
-
+    import Modal from '$lib/components/Modal.svelte';
+    
     onMount(()=>{
         loadInvoices();
     });
@@ -32,8 +32,6 @@
 </div>
 
 <div class="w-full">
-    <Portal><div>Invoice Form</div></Portal>
-
     {#if $invoices === null}
         Loading...
     {:else if $invoices.length <=0}
@@ -50,3 +48,4 @@
 </div>
 
 
+<Modal />
